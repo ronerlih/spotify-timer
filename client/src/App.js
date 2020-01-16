@@ -3,22 +3,12 @@ import { StaticRouter, BrowserRouter as Router, Route, Switch, Redirect } from "
 import Books from "./pages/Books";
 import Detail from "./pages/Detail";
 import Login from "./pages/Login";
+import Landing from "./pages/Landing";
 import Signup from "./pages/Signup";
 import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
 import Alert from "./components/Alert";
 import {/* getCookie, */ authenticateUser, getCpu } from "./utils/handleSessions";
-
-const PrivateRoute = ({ component: Component, state: state, ...rest }) => (
-  <Route {...rest} render={(props) => (
-    state.authenticated === true
-      ? <Component {...props} />
-      : state.loading === true
-        ? <div>
-        </div>
-        : <Redirect to='/' />
-  )} />
-)
 
 class App extends React.Component {
   constructor(props) {
@@ -69,22 +59,9 @@ class App extends React.Component {
               render={(props) =>
                 <Login {...props} authenticate={this.authenticate} authenticated={this.state.authenticated} />}
             />
-            <Route
-              exact
-              path="/signup"
-              render={(props) =>
-                <Signup {...props} authenticate={this.authenticate} authenticated={this.state.authenticated} />}
-            />
-            <PrivateRoute exact path="/books" state={this.state} component={Books} />
-            <PrivateRoute exact path="/books/:id" state={this.state} component={Detail} />
             <Route component={NoMatch} />
           </Switch>
-          {this.state.cpu
-            ? ""
-            : ""
-          }
-          <Alert cpu= {this.state.cpu ? this.state.cpu.data: ""} onclick={this.removeInfo}>
-              </Alert>
+         
         </div>
       </RouterComponent>
 
