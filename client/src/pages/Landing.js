@@ -1,6 +1,7 @@
 import React, { Component } from "react";
+import moment from 'moment'
 import DeleteBtn from "../components/DeleteBtn";
-import Jumbotron from "../components/Jumbotron";
+import Timer from "../components/Timer";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
@@ -16,7 +17,7 @@ class Landing extends Component {
   };
 
   componentDidMount() {
-    // this.loadBooks();
+    
   }
 
   loadBooks = () => {
@@ -57,13 +58,8 @@ class Landing extends Component {
     return (
       <Container fluid>
         <Row>
-          <Jumbotron>
-            <h1>Spotify Timer</h1>
-          </Jumbotron>
-        </Row>
-        <Row>
         <Col size="md-6">
-        clock
+        <Timer />
         </Col>
         <Col size="md-6 sm-12">
         playlist

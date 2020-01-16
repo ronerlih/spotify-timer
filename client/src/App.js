@@ -57,7 +57,7 @@ class App extends React.Component {
               exact
               path="/"
               render={(props) =>
-                <Login {...props} authenticate={this.authenticate} authenticated={this.state.authenticated} />}
+                <Landing {...props} authenticate={this.authenticate} authenticated={this.state.authenticated} />}
             />
             <Route component={NoMatch} />
           </Switch>
