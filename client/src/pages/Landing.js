@@ -58,11 +58,11 @@ class Landing extends Component {
     return (
       <Container fluid>
         <Row>
-        <Col size="md-6">
+        <Col size="md-6" style={{display:"flex", flexFlow:"column", background:"#09d3ac", padding:"5px", height:"calc(100vh - 56px)", marginTop: "auto", marginBottom: "auto"}}>
         <Timer />
         </Col>
         <Col size="md-6 sm-12">
-        playlist
+          playlist
         </Col>
         </Row>
       </Container >

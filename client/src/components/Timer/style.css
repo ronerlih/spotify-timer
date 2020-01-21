@@ -1,15 +1,22 @@
+div > * {
+  color:white;
+  font-weight: 700;
+  font-size: 20px;;
+}
 .circle {
   width: 180px;
   height: 180px;
   margin: 0 auto;
   position: relative;
-  border: 8px solid black;
+  border: 4px solid white;
   border-radius: 50%;
 }
+
 .circle .face {
   width: 100%;
   height: 100%;
 }
+
 .circle .face:after {
   position: absolute;
   top: 50%;
@@ -17,33 +24,51 @@
   width: 12px;
   height: 12px;
   margin: -6px 0 0 -6px;
-  background: black;
+  background: white;
   border-radius: 6px;
   content: "";
   display: block;
 }
-.circle .face .hour, .circle .face .minute, .circle .face .second {
+
+.circle .face .hour, .circle .face .minute, .circle .face .second, .circle .face .millisecond {
   width: 0;
   height: 0;
   position: absolute;
   top: 50%;
   left: 50%;
-  background: black;
-  border-radius: 4px 0 0 4px;
+  background: white;
+  border-radius: 4px;
 }
+
 .circle .face .minute, .circle .face .second {
   transform-origin: 50% 100%;
 }
+
+
 .circle .face .hour {
-  margin: -4px 0 -4px -25%;
-  padding: 4px 0 4px 25%;
-  transform-origin: 100% 50%;
+  margin: -2px 0 -2px -25%;
+  padding: 2px 0 2px 25%;
+  transform-origin: 101% 50%;
+}
+
+.circle .face .millisecond {
+  margin: -0.5px 0 0.5px -15%;
+  padding: 0.5px 0 0.5px 15%;
+  transform-origin: 100% 100%;
+  background: red;
+
 }
 .circle .face .minute {
-  margin: -40% -3px 0;
-  padding: 40% 3px 0;
+  margin: -40% -2px 0;
+  padding: 40% 2px 0;
 }
+
 .circle .face .second {
   margin: -40% -1px 0 0;
   padding: 40% 1px 0;
 }
+/* .circle .face .millisecond {
+  margin: -40% -1px 0 0;
+  padding: 40% 1px 0;
+} */
+
