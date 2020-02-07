@@ -65,8 +65,9 @@ class Timer extends React.Component {
     let name = e.target.name;
 
     console.log(name, value);
-    this.setState({ [name]: value })
-    this.updateClock();
+    this.setState({ [name]: value },
+    this.updateClock
+    )
     
   }
 
