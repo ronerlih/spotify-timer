@@ -47,7 +47,7 @@ div > * {
 
 .circle .face .hour {
   margin: -2px 0 -2px -25%;
-  padding: 2px 0 2px 25%;
+  padding: 4px 0 2px 25%;
   transform-origin: 101% 50%;
 }
 
@@ -66,6 +66,9 @@ div > * {
 .circle .face .second {
   margin: -40% -1px 0 0;
   padding: 40% 1px 0;
+}
+.circle{
+  border: 10px solid white;
 }
 /* .circle .face .millisecond {
   margin: -40% -1px 0 0;

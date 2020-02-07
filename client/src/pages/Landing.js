@@ -14,10 +14,27 @@ class Landing extends Component {
     // title: "",
     // author: "",
     // synopsis: ""
+    spotify:null
   };
 
   componentDidMount() {
-    
+    fetch('https://open.spotify.com/playlist/37i9dQZF1DWWQRwui0ExPn',{
+      responseType : 'blob',
+      headers:{
+        "Access-Control-Allow-Origin": 'https://open.spotify.com',
+        "Content-Security-Policy": 'frame-ancestors self',
+        'cors':'no-cors',
+        "Content-Type": "application/json",
+        'Allow-Control-Allow-Methods':"*",
+       
+        'Access-Control-Allow-Credentials': 'true',
+        "Access-Control-Allow-Headers": "Content-Type Access-Control-Allow-Headers Authorization X-Requested-With"
+      }
+    })
+    .then((data ) => data.text())
+    .then(data => {
+      this.setState({spotify:data})})
+    .catch(e => console.log(e))
   }
 
   loadBooks = () => {
@@ -58,12 +75,15 @@ class Landing extends Component {
     return (
       <Container fluid>
         <Row>
-        <Col size="md-6" style={{display:"flex", flexFlow:"column", background:"#09d3ac", padding:"5px", height:"calc(100vh - 56px)", marginTop: "auto", marginBottom: "auto"}}>
-        <Timer />
-        </Col>
-        <Col size="md-6 sm-12">
-          playlist
-        </Col>
+          <Col size="md-6" style={{ display: "flex", flexFlow: "column", background: "#09d3ac", padding: "5px", height: "calc(100vh - 56px)", marginTop: "auto", marginBottom: "auto" }}>
+            <Timer />
+          </Col>
+          <Col size="sm-6" style={{padding:0, backgroundColor:'black' }}>
+            <div>
+            <iframe src="https://open.spotify.com/embed/playlist/37i9dQZF1DWWQRwui0ExPn" width="100%" height="722px" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+            </div>
+           
+          </Col>
         </Row>
       </Container >
     );

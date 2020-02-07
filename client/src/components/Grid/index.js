@@ -21,7 +21,8 @@ export function Col({ style, size, children }) {
       className={size
         .split(" ")
         .map(size => "col-" + size)
-        .join(" ") + " my-auto"}
+        // .join(" ") + " my-auto"}
+        }
         style={style ? style : {}}
     >
       {children}
