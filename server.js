@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 3001;
 const compression = require('compression')
 const session = require('express-session')
 const RedisStore = require('connect-redis')(session)
-import client from './scripts/redis';
+// import client from './scripts/redis';
 import initSession from './scripts/session';
 import {serverRenderer} from './controllers/serverSideRendering';
 import errorHandler from './scripts/errorHandler';
@@ -21,15 +21,16 @@ app.use(morgan("dev"));
 app.use(compression())
 
 //use sessions for tracking logins
-app.use(initSession(session, RedisStore, client));
+// app.use(initSession(session, RedisStore, client));
+app.use(initSession(session));
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // ssr
-if (process.argv.indexOf("no-ssr") < 0)
-  router.use("^/$", serverRenderer)
+// if (process.argv.indexOf("no-ssr") < 0)
+//   router.use("^/$", serverRenderer)
 
 // Serve up static assets (usually on heroku)
 // if (process.env.NODE_ENV === "production") {
