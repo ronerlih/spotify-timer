@@ -7,8 +7,13 @@ import Face from "../Clock/Face"
 import "./style.css"
 import moment from "moment"
 import TimerInput from "../Timer/TimerInput"
+import Sound from 'react-sound';
+
+let playing = Sound.status.PLAYING;
+let pausing = Sound.status.PAUSING;
 
 class Timer extends React.Component {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -20,14 +25,15 @@ class Timer extends React.Component {
       minuteDeg: "",
       hour: 0,
       hourDeg: "",
-      timerInput: ""
+      timerInput: "",
+      soundState: false
     }
   }
-
   updateClock = () => {
     console.log(this.state.second);
     if(!this.state.second && !this.state.minute ){
       this.setState({done:true})
+      this.setState({soundState: true})
       console.log("done");
       return;
     }
@@ -90,7 +96,7 @@ class Timer extends React.Component {
   timedUpdate = () => {
     if(!this.state.done){
       this.updateClock();
-      setTimeout(this.timedUpdate, 1);
+      setTimeout(this.timedUpdate, 1000);
     }
     else{
       this.setState({done: false})
@@ -126,15 +132,22 @@ class Timer extends React.Component {
   render() {
     return (
       <div className="circle my-auto">
-        <div style={{ textAlign: "center", marginTop: "-80px" }}>
+        <div style={{ textAlign: "center", marginTop: "-150px" }}>
           <TimerInput value={this.state} onClick={this.handleSubmit} onChange={this.handleInputChange} />
         </div>
+        {}
         <Face>
           {/* <Millisecond deg={this.state.millisecond} /> */}
           <Second deg={this.state.secondDeg} />
           <Hour deg={this.state.hourDeg} />
           <Minute deg={this.state.minuteDeg} />
         </Face>
+        <Sound 
+              url="Ding-sound-effect.mp3"
+              playStatus={this.state.soundState ? Sound.status.PLAYING : Sound.status.PAUSED}
+              volume="100"
+              autoLoad='true'
+              />
       </div>
     );
   }

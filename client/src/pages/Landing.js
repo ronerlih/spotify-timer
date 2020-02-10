@@ -37,20 +37,6 @@ class Landing extends Component {
     .catch(e => console.log(e))
   }
 
-  loadBooks = () => {
-    API.getBooks()
-      .then(res =>
-        this.setState({ books: res.data, title: "", author: "", synopsis: "" })
-      )
-      .catch(err => console.log(err));
-  };
-
-  deleteBook = id => {
-    API.deleteBook(id)
-      .then(res => this.loadBooks())
-      .catch(err => console.log(err));
-  };
-
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
@@ -75,7 +61,7 @@ class Landing extends Component {
     return (
       <Container fluid>
         <Row>
-          <Col size="md-6" style={{ display: "flex", flexFlow: "column", background: "#09d3ac", padding: "5px", height: "calc(100vh - 56px)", marginTop: "auto", marginBottom: "auto" }}>
+          <Col size="sm-6" style={{ display: "flex", flexFlow: "column", background: "#09d3ac", padding: "5px", height: "calc(100vh - 56px)", marginTop: "auto", marginBottom: "auto" }}>
             <Timer />
           </Col>
           <Col size="sm-6" style={{padding:0, backgroundColor:'black' }}>

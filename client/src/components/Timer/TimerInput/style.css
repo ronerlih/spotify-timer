@@ -4,8 +4,8 @@
   outline: none;
   color:white;
   direction:rtl;
-  font-size: 20px;
-  max-width: 40px;
+  font-size: 40px;
+  max-width: 70px;
   text-align: center;
 }
 .timerInput:active {

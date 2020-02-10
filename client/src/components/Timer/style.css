@@ -4,8 +4,8 @@ div > * {
   font-size: 20px;;
 }
 .circle {
-  width: 180px;
-  height: 180px;
+  width: 280px;
+  height: 280px;
   margin: 0 auto;
   position: relative;
   border: 4px solid white;
