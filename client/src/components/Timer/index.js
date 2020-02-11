@@ -28,11 +28,17 @@ class Timer extends React.Component {
       soundState: false
     }
   }
+  playSound = () => {
+    this.setState({soundState: true});
+    setTimeout(() => this.setState({soundState: false}), 1500)
+  }
   updateClock = () => {
     console.log(this.state.second);
     if(!this.state.second && !this.state.minute ){
-      this.setState({done:true})
-      this.setState({soundState: true})
+      this.setState({done:true});
+      this.playSound();
+      setTimeout(this.playSound, 2000);
+      setTimeout(this.playSound, 4000);
       console.log("done");
       return;
     }
@@ -147,6 +153,7 @@ class Timer extends React.Component {
               playStatus={this.state.soundState ? Sound.status.PLAYING : Sound.status.PAUSED}
               volume="100"
               autoLoad='true'
+              position='0'
               />
       </div>
     );

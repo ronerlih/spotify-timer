@@ -75,3 +75,6 @@ div > * {
   padding: 40% 1px 0;
 } */
 
+.circle{
+  min-height: 280px;  
+}
