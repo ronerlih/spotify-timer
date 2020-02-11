@@ -9,8 +9,7 @@ import moment from "moment"
 import TimerInput from "../Timer/TimerInput"
 import Sound from 'react-sound';
 
-let playing = Sound.status.PLAYING;
-let pausing = Sound.status.PAUSING;
+const TIMER_INTERVAL = 1;
 
 class Timer extends React.Component {
 
@@ -96,7 +95,7 @@ class Timer extends React.Component {
   timedUpdate = () => {
     if(!this.state.done){
       this.updateClock();
-      setTimeout(this.timedUpdate, 1000);
+      setTimeout(this.timedUpdate, TIMER_INTERVAL);
     }
     else{
       this.setState({done: false})
@@ -121,6 +120,7 @@ class Timer extends React.Component {
     let value = e.target.value;
     let name = e.target.name;
 
+    value = value < 10 ? '0' + value : value; 
     console.log(name, value);
     this.setState({ [name]: value },
     // this.updateClock

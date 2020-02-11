@@ -61,7 +61,7 @@ class Landing extends Component {
     return (
       <Container fluid>
         <Row>
-          <Col size="sm-6" style={{ display: "flex", flexFlow: "column", background: "#09d3ac", padding: "5px", height: "calc(100vh - 56px)", marginTop: "auto", marginBottom: "auto" }}>
+          <Col size="sm-6" style={{ display: "flex", flexFlow: "column", background: "#09d3ac", padding: "5px", height: "calc(100vh - 56px)", marginBottom: "auto" }}>
             <Timer />
           </Col>
           <Col size="sm-6" style={{padding:0, backgroundColor:'black' }}>
