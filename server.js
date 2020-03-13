@@ -2,15 +2,15 @@ const express = require("express");
 const router = require("express").Router();
 const path = require("path");
 const morgan = require("morgan");
-const mongoose = require("mongoose");
+// const mongoose = require("mongoose");
 const APIandAppRoutes = require("./routes");
 const app = express();
 const PORT = process.env.PORT || 3001;
 const compression = require('compression')
-const session = require('express-session')
+// const session = require('express-session')
 // const RedisStore = require('connect-redis')(session)
 // import client from './scripts/redis';
-import initSession from './scripts/session';
+// import initSession from './scripts/session';
 // import {serverRenderer} from './controllers/serverSideRendering';
 import errorHandler from './scripts/errorHandler';
 
@@ -22,7 +22,7 @@ app.use(compression())
 
 //use sessions for tracking logins
 // app.use(initSession(session, RedisStore, client));
-app.use(initSession(session));
+// app.use(initSession(session));
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
@@ -40,14 +40,14 @@ app.use(express.json());
 // Add router (ssr and static)
 app.use(router);
 // Add API and view routes
-app.use(APIandAppRoutes);
+router.use(APIandAppRoutes);
 
 // error handling
 app.use((err, req, res, next) => errorHandler(err, req, res, next));
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/mern-auth",{   useCreateIndex: true,
-useUnifiedTopology: true, useNewUrlParser: true});
+// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/mern-auth",{   useCreateIndex: true,
+// useUnifiedTopology: true, useNewUrlParser: true});
 
 // Start the API server
 app.listen(PORT, function () {
