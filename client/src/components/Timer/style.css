@@ -78,3 +78,6 @@ div > * {
 .circle{
   min-height: 280px;  
 }
+form > div{
+  display: inline-block;
+}

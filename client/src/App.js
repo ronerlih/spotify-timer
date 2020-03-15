@@ -41,7 +41,7 @@ class App extends React.Component {
 
   removeInfo = () => this.setState({ cpu: null })
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
       this.authenticate();
       this.getCpu();
   }

@@ -14,25 +14,7 @@ class Landing extends Component {
     };
 
     componentDidMount() {
-        fetch("https://open.spotify.com/playlist/37i9dQZF1DWWQRwui0ExPn", {
-            responseType: "blob",
-            headers: {
-                "Access-Control-Allow-Origin": "https://open.spotify.com",
-                "Content-Security-Policy": "frame-ancestors self",
-                cors: "no-cors",
-                "Content-Type": "application/json",
-                "Allow-Control-Allow-Methods": "*",
 
-                "Access-Control-Allow-Credentials": "true",
-                "Access-Control-Allow-Headers":
-                    "Content-Type Access-Control-Allow-Headers Authorization X-Requested-With"
-            }
-        })
-            .then(data => data.text())
-            .then(data => {
-                this.setState({ spotify: data });
-            })
-            .catch(e => console.log(e));
     }
 
     handleInputChange = event => {
@@ -82,7 +64,7 @@ class Landing extends Component {
                                 src="https://open.spotify.com/embed/playlist/37i9dQZF1DWWQRwui0ExPn"
                                 width="100%"
                                 height="722px"
-                                frameborder="0"
+                                frameBorder="0"
                                 allowtransparency="true"
                                 allow="encrypted-media"
                             ></iframe>

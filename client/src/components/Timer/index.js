@@ -33,69 +33,27 @@ class Timer extends React.Component {
         setTimeout(() => this.setState({ soundState: false }), 1500);
     };
     updateClock = () => {
-        // console.log(this.state.millisecond);
-        // console.log(moment().millisecond());
-        let millisecond, second, minute, hour;
         let TimeLeft = moment.duration(startTime.diff(moment()))
 
         //times up
         if (TimeLeft._milliseconds <= 0){
-            this.setState({ done: true });
+            this.setState({ done: true ,submitActive : true});
+            this.updataState();
             this.playSound();
             setTimeout(this.playSound, 2000);
             setTimeout(this.playSound, 4000);
-            console.log("done");
+
             return;
         }
         else {
-           
-            this.setState({
-                millisecond: TimeLeft.milliseconds(),
-                second: TimeLeft.seconds(),
-                minute: TimeLeft.minutes(),
-                hour: TimeLeft.hours()
-            });}
-        // }
-        // else if (this.state.millisecond == 0 && this.state.second == 0 && this.state.minute > 0) {
-        //     millisecond = 1000;
-        //     second = 60;
-        //     minute = this.state.minute - 1;
-        //     hour = this.state.hour;
-        //     this.setState({
-        //         millisecond: 1000,
-        //         second: 60,
-        //         minute: minute ,
-        //         hour: this.state.hour
-        //     });
-        // } else  {
-        //     // console.log(this.state.millisecond);
-        //     millisecond = this.state.millisecond -1;
-            
-        //     this.setState({
-        //         millisecond: millisecond
-        //     });
-        // }
 
-     
-        // time = moment(time)
-        // time = moment();
-        // console.log("update clock");
-        this.setState({ millisecondDeg: (TimeLeft.milliseconds() / 2.77777777778) + 90});
-        this.setState({ secondDeg: TimeLeft.seconds() * 6 });
-        this.setState({
-            minuteDeg: TimeLeft.minutes() * 6 + this.state.secondDeg / 60
-        });
-        // console.log(time.hours());
-        this.setState({
-            hourDeg:
-                ((TimeLeft.hours() % 12) / 12) * 360 +
-                90 +
-                this.state.minuteDeg / 12
-        });
+
+        this.updataFace();
+        }
     };
+
     setClock = () => {
         startTime = moment();
-
         let time = {
             milliseconds: +this.state.millisecond,
             seconds: +this.state.second,
@@ -103,27 +61,29 @@ class Timer extends React.Component {
             hours: +this.state.hour
         }; 
         startTime.add(time)
-        let TimeLeft = moment.duration(startTime.diff(moment()))
-        console.log(TimeLeft);
-        // console.log(time);
-        // time = moment(time)
-        // time = moment();
-        // console.log('TimeLeft');
-        // console.log(TimeLeft.milliseconds());
-        console.log("update clock");
-        this.setState({ millisecondDeg: (TimeLeft.milliseconds()  / 2.77777777778) + 90} );
-        this.setState({ secondDeg: TimeLeft.seconds() * 6 });
-        this.setState({
-            minuteDeg: TimeLeft.minutes() * 6 + this.state.secondDeg / 60
-        });
-        console.log(TimeLeft.hours());
-        this.setState({
-            hourDeg:
-                ((TimeLeft.hours() % 12) / 12) * 360 +
-                90 +
-                this.state.minuteDeg / 12
-        });
+        this.updataFace();
     };
+    updataState = () => {
+        let TimeLeft = moment.duration(startTime.diff(moment()))
+        this.setState({ 
+            millisecond: TimeLeft.milliseconds(),
+            second: ("0" + TimeLeft.seconds()).slice(-2),
+            minute: ("0" + TimeLeft.minutes()).slice(-2),
+            hour: ("0" + TimeLeft.hours()).slice(-2)
+        } );
+    }
+    updataFace = () => {
+        let TimeLeft = moment.duration(startTime.diff(moment()))
+        this.setState({ 
+            millisecondDeg: (TimeLeft.milliseconds()  / 2.77777777778) + 90,
+            secondDeg: TimeLeft.seconds() * 6,
+            minuteDeg: TimeLeft.minutes() * 6 + this.state.secondDeg / 60,
+            hourDeg:
+            ((TimeLeft.hours() % 12) / 12) * 360 +
+            90 +
+            this.state.minuteDeg / 12
+        } );
+    }
 
     timedUpdate = () => {
         if (!this.state.done) {
@@ -134,12 +94,11 @@ class Timer extends React.Component {
         }
     };
 
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         this.setClock();
     }
 
     onStop = e => {
-        e.preventDefault();
         this.setState({
             done: false,
             millisecond: 0,
@@ -158,6 +117,9 @@ class Timer extends React.Component {
     handleSubmit = e => {
         e.preventDefault();
         // this.timedUpdate();
+        startTime = moment();
+        this.setClock();
+
         this.setState({ submitActive: false });
         this.timedUpdate();
     };
@@ -199,9 +161,9 @@ class Timer extends React.Component {
                             ? Sound.status.PLAYING
                             : Sound.status.PAUSED
                     }
-                    volume="100"
-                    autoLoad="true"
-                    position="0"
+                    volume={100}
+                    autoLoad={true}
+                    position={0}
                 />
             </div>
         );
