@@ -8,6 +8,10 @@
   max-width: 70px;
   text-align: center;
   text-indent: -20px;
+  /* vertical-align: -18px; */
+  /* font-family: 'Six Caps', sans-serif; */
+  /* font-family: 'Tulpen One', cursive; */
+
 
 }
 .timerInput:active {
@@ -19,7 +23,11 @@
     margin-left: 5px;
     font-size: 47px;
     padding-top: -10px;
-    line-height: 52px;  }
+    line-height: 52px;  
+  font-family: 'Six Caps', sans-serif;
+
+  }
+
     input[type=number]::-webkit-inner-spin-button {
       /* -webkit-appearance: none; */
       /* width:0px; */

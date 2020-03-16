@@ -1,40 +1,21 @@
 import React, { Component } from "react";
-import moment from "moment";
-import DeleteBtn from "../components/DeleteBtn";
 import Timer from "../components/Timer";
-import API from "../utils/API";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
-import { List, ListItem } from "../components/List";
-import { Input, TextArea, FormBtn } from "../components/Form";
 
 class Landing extends Component {
     state = {
-        spotify: null
+        spotify: null,
+        iframeSrc: "https://open.spotify.com/embed/playlist/37i9dQZF1DWWQRwui0ExPn"
     };
+    spotifyRef =  React.createRef();
 
-    componentDidMount() {
-
-    }
 
     handleInputChange = event => {
         const { name, value } = event.target;
         this.setState({
             [name]: value
         });
-    };
-
-    handleFormSubmit = event => {
-        event.preventDefault();
-        if (this.state.title && this.state.author) {
-            API.saveBook({
-                title: this.state.title,
-                author: this.state.author,
-                synopsis: this.state.synopsis
-            })
-                .then(res => this.loadBooks())
-                .catch(err => console.log(err));
-        }
     };
 
     render() {
@@ -53,7 +34,7 @@ class Landing extends Component {
                             marginBottom: "auto"
                         }}
                     >
-                        <Timer />
+                        <Timer iframeSrc={this.state.iframeSrc} refHook={this.spotifyRef} />
                     </Col>
                     <Col
                         size="sm-6"
@@ -61,12 +42,14 @@ class Landing extends Component {
                     >
                         <div>
                             <iframe
-                                src="https://open.spotify.com/embed/playlist/37i9dQZF1DWWQRwui0ExPn"
+                                src={this.state.iframeSrc}
                                 width="100%"
                                 height="722px"
                                 frameBorder="0"
                                 allowtransparency="true"
                                 allow="encrypted-media"
+                                title="spotify-player"
+                                ref={this.spotifyRef}
                             ></iframe>
                         </div>
                     </Col>

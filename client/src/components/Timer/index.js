@@ -43,6 +43,7 @@ class Timer extends React.Component {
             setTimeout(this.playSound, 2000);
             setTimeout(this.playSound, 4000);
 
+            this.reloadIframe();
             return;
         }
         else {
@@ -99,6 +100,7 @@ class Timer extends React.Component {
     }
 
     onStop = e => {
+        e.preventDefault();
         this.setState({
             done: false,
             millisecond: 0,
@@ -112,8 +114,14 @@ class Timer extends React.Component {
             soundState: false,
             submitActive: true
         }, this.setClock);
+        this.reloadIframe();
     };
 
+    reloadIframe = () => {
+        this.props.refHook.current.src = "";
+        this.props.refHook.current.src = this.props.iframeSrc;
+
+    }
     handleSubmit = e => {
         e.preventDefault();
         // this.timedUpdate();

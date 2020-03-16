@@ -1,13 +1,12 @@
 import React from "react";
-import { StaticRouter, BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
-import Books from "./pages/Books";
-import Detail from "./pages/Detail";
-import Login from "./pages/Login";
+import { StaticRouter, BrowserRouter as Router, Route, Switch } from "react-router-dom";
+// import Detail from "./pages/Detail";
+// import Login from "./pages/Login";
 import Landing from "./pages/Landing";
-import Signup from "./pages/Signup";
+// import Signup from "./pages/Signup";
 import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
-import Alert from "./components/Alert";
+// import Alert from "./components/Alert";
 import {/* getCookie, */ authenticateUser, getCpu } from "./utils/handleSessions";
 
 class App extends React.Component {

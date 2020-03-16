@@ -11,7 +11,7 @@ function TimerInput(props) {
                     min="0"
                     max="59"
                     className="timerInput"
-                    value={props.value.hour == 0 ? "" : props.value.hour}
+                    value={props.value.hour === 0 ? "" : props.value.hour}
                     onChange={props.onChange}
                 />
                 <div className="colomn">:</div>
@@ -22,7 +22,7 @@ function TimerInput(props) {
                     className="timerInput"
                     min="0"
                     max="59"
-                    value={props.value.minute == 0 ? "" : props.value.minute}
+                    value={props.value.minute === 0 ? "" : props.value.minute}
                     onChange={props.onChange}
                 />
                 <div className="colomn">:</div>
@@ -33,7 +33,7 @@ function TimerInput(props) {
                     min="0"
                     max="59"
                     className="timerInput"
-                    value={props.value.second == 0 ? "" : props.value.second}
+                    value={props.value.second === 0 ? "" : props.value.second}
                     onChange={props.onChange}
                 />
                 <br />
