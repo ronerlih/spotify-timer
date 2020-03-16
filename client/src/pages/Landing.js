@@ -42,6 +42,7 @@ class Landing extends Component {
                     >
                         <div>
                             <iframe
+<<<<<<< HEAD
                                 src={this.state.src}
                                 width="100%"
                                 height="722px"
@@ -50,6 +51,9 @@ class Landing extends Component {
                                 allow="encrypted-media"
                                 title="spotify-player"
                                 ref={this.spotifyRef}
+=======
+                                src="https://google.com"
+>>>>>>> master
                             ></iframe>
                         </div>
                     </Col>
