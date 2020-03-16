@@ -6,7 +6,7 @@ import { Col, Row, Container } from "../components/Grid";
 class Landing extends Component {
     state = {
         spotify: null,
-        iframeSrc: "https://open.spotify.com/embed/playlist/37i9dQZF1DWWQRwui0ExPn"
+        iframeSrc: "https://google.com"
     };
     spotifyRef =  React.createRef();
 
