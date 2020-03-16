@@ -5,7 +5,7 @@
   color:white;
   direction:rtl;
   font-size: 40px;
-  max-width: 70px;
+  max-width: 65px;
   text-align: center;
   text-align: right;
   /* vertical-align: -18px; */
@@ -36,5 +36,5 @@
       /* -webkit-appearance: none; */
       /* width:0px; */
       color: green;
-      margin-right:-30px;
+      margin-right:-35px;
     }
