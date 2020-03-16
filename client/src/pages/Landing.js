@@ -6,7 +6,7 @@ import { Col, Row, Container } from "../components/Grid";
 class Landing extends Component {
     state = {
         spotify: null,
-        iframeSrc: "https://google.com"
+        src: "https://google.com"
     };
     spotifyRef =  React.createRef();
 
@@ -42,7 +42,7 @@ class Landing extends Component {
                     >
                         <div>
                             <iframe
-                                src={this.state.iframeSrc}
+                                src={this.state.src}
                                 width="100%"
                                 height="722px"
                                 frameBorder="0"
