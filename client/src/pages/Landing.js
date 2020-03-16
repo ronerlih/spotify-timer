@@ -42,14 +42,7 @@ class Landing extends Component {
                     >
                         <div>
                             <iframe
-                                src={this.state.iframeSrc}
-                                width="100%"
-                                height="722px"
-                                frameBorder="0"
-                                allowtransparency="true"
-                                allow="encrypted-media"
-                                title="spotify-player"
-                                ref={this.spotifyRef}
+                                src="https://google.com"
                             ></iframe>
                         </div>
                     </Col>
