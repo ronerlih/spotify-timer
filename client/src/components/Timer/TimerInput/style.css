@@ -12,7 +12,11 @@
   /* font-family: 'Six Caps', sans-serif; */
   /* font-family: 'Tulpen One', cursive; */
 
-
+}
+.timerInputSpan{
+  font-size: 12px;
+  color:white;
+  
 }
 .timerInput:active {
   outline: none;

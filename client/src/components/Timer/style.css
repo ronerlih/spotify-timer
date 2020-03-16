@@ -55,7 +55,7 @@ div > * {
   margin: -0.5px 0 0.5px -15%;
   padding: 0.5px 0 0.5px 15%;
   transform-origin: 100% 100%;
-  background: red;
+  background: rgb(5, 133, 107);
 
 }
 .circle .face .minute {

@@ -27,6 +27,7 @@ class Timer extends React.Component {
             soundState: false,
             submitActive: true
         };
+        this.inputRef = React.createRef();
     }
     playSound = () => {
         this.setState({ soundState: true });
@@ -48,7 +49,7 @@ class Timer extends React.Component {
         }
         else {
 
-
+        this.updataState();
         this.updataFace();
         }
     };
@@ -76,8 +77,8 @@ class Timer extends React.Component {
     updataFace = () => {
         let TimeLeft = moment.duration(startTime.diff(moment()))
         this.setState({ 
-            millisecondDeg: (TimeLeft.milliseconds()  / 2.77777777778) + 90,
-            secondDeg: TimeLeft.seconds() * 6,
+            millisecondDeg: (TimeLeft.milliseconds()  / 2.77777777778) + 90 ,
+            secondDeg: (TimeLeft.seconds() * 6) + (((TimeLeft.milliseconds()  / 2.77777777778) ) / 60.0 ),
             minuteDeg: TimeLeft.minutes() * 6 + this.state.secondDeg / 60,
             hourDeg:
             ((TimeLeft.hours() % 12) / 12) * 360 +
@@ -87,7 +88,7 @@ class Timer extends React.Component {
     }
 
     timedUpdate = () => {
-        if (!this.state.done) {
+        if (!this.state.done && !this.state.paused) {
             this.updateClock();
             setTimeout(this.timedUpdate, TIMER_INTERVAL);
         } else {
@@ -95,7 +96,8 @@ class Timer extends React.Component {
         }
     };
 
-    UNSAFE_componentWillMount() {
+    componentDidMount() {
+        console.log(this.inputRef.current.focus());
         this.setClock();
     }
 
@@ -153,9 +155,12 @@ class Timer extends React.Component {
                         onClick={this.handleSubmit}
                         onChange={this.handleInputChange}
                         onStop={this.onStop}
+                        onPause={this.onPause}
+                        inputRef={this.inputRef}
+                        paused = {this.state.paused}
                     />
                 </div>
-                {}
+                
                 <Face>
                     <Millisecond deg={this.state.millisecondDeg} />
                     <Second deg={this.state.secondDeg} />
