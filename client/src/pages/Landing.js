@@ -17,7 +17,7 @@ class Landing extends Component {
             [name]: value
         });
     };
-
+  
     render() {
         return (
             <Container fluid>
