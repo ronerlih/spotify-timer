@@ -99,13 +99,12 @@ class Timer extends React.Component {
         console.log(this.inputRef.current.focus());
         this.setClock();
         // remove spotify html cover
-        clearHtmlInterval = setInterval(()=>{
-            let closeButtonPolygon = document.querySelector("polygon");
-            if(closeButtonPolygon){
-                console.log(document.querySelector("polygon"));
-                closeButtonPolygon.parentElement.parentElement.click();
-            }
-        }, 1000)
+        // clearHtmlInterval = setInterval(()=>{
+        //     let closeButtonPolygon = document.querySelector("polygon");
+        //     if(closeButtonPolygon){
+        //         closeButtonPolygon.parentElement.parentElement.click();
+        //     }
+        // }, 1000)
         
     }
 
