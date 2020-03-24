@@ -11,6 +11,7 @@ import Sound from "react-sound";
 
 const TIMER_INTERVAL = 1;
 let startTime;
+let clearHtmlInterval;
 class Timer extends React.Component {
     constructor(props) {
         super(props);
@@ -48,12 +49,10 @@ class Timer extends React.Component {
             return;
         }
         else {
-
         this.updataState();
         this.updataFace();
         }
     };
-
     setClock = () => {
         startTime = moment();
         let time = {
@@ -77,7 +76,7 @@ class Timer extends React.Component {
     updataFace = () => {
         let TimeLeft = moment.duration(startTime.diff(moment()))
         this.setState({ 
-            millisecondDeg: (TimeLeft.milliseconds()  / 2.77777777778) + 90 ,
+            millisecondDeg: (TimeLeft.milliseconds()  / 2.77777777778)  ,
             secondDeg: (TimeLeft.seconds() * 6) + (((TimeLeft.milliseconds()  / 2.77777777778) ) / 60.0 ),
             minuteDeg: TimeLeft.minutes() * 6 + this.state.secondDeg / 60,
             hourDeg:
@@ -99,6 +98,15 @@ class Timer extends React.Component {
     componentDidMount() {
         console.log(this.inputRef.current.focus());
         this.setClock();
+        // remove spotify html cover
+        clearHtmlInterval = setInterval(()=>{
+            let closeButtonPolygon = document.querySelector("polygon");
+            if(closeButtonPolygon){
+                console.log(document.querySelector("polygon"));
+                closeButtonPolygon.parentElement.parentElement.click();
+            }
+        }, 1000)
+        
     }
 
     onStop = e => {

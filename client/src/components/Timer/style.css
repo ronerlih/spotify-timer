@@ -47,15 +47,15 @@ div > * {
 
 .circle .face .hour {
   margin: -2px 0 -2px -25%;
-  padding: 4px 0 2px 25%;
-  transform-origin: 101% 50%;
+  padding: 4px 0 1px 25%;
+  transform-origin: 101.5% 50%;
 }
 
 .circle .face .millisecond {
   margin: -0.5px 0 0.5px -15%;
   padding: 0.5px 0 0.5px 15%;
-  transform-origin: 100% 100%;
-  background: rgb(5, 133, 107);
+  transform-origin: 50%;
+  background: white ;
 
 }
 .circle .face .minute {
@@ -67,6 +67,15 @@ div > * {
   margin: -40% -1px 0 0;
   padding: 40% 1px 0;
 }
+.second {
+  margin: -42% -1px 0 0!important;
+  padding: 42% 1px 0!important;
+}
+.minute {
+  margin: -40% -1px 0!important;
+  padding: 40% 2px 0!important;
+}
+
 .circle{
   border: 10px solid white;
 }
@@ -74,9 +83,20 @@ div > * {
   margin: -40% -1px 0 0;
   padding: 40% 1px 0;
 } */
+.millisecond {
+  /* width:5px!important; */
+  margin: -10% -1px 0 0!important;
+  padding: 10% 1px 0 0!important;
+  transform-origin: 1% calc(100% + 1px)!important;
+  /* z-index: 3; */
+  background-color:rgb(94, 250, 255)!important;
+  /* background-color:rgb(9, 211, 172)!important; */
+  
 
+}
 .circle{
-  min-height: 280px;  
+  min-height: 280px;
+  
 }
 form > div{
   display: inline-block;

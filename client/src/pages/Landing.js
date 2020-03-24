@@ -34,7 +34,7 @@ class Landing extends Component {
                             marginBottom: "auto"
                         }}
                     >
-                        <Timer iframeSrc={this.state.iframeSrc} refHook={this.spotifyRef} />
+                        <Timer iframeSrc={this.state.src} refHook={this.spotifyRef} />
                     </Col>
                     <Col
                         size="sm-6"
