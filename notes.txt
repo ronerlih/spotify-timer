@@ -38,8 +38,27 @@ curl -i localhost:49160
 //https://nodejs.org/de/docs/guides/nodejs-docker-webapp/
 
 // docker visualizer
-docker run -it -d -p 8080:8080 -v /var/run/docker.sock:/var/run/docker.sock dockersamples/visualizer
+docker run -it -d -p 5000:8080 -v /var/run/docker.sock:/var/run/docker.sock dockersamples/visualizer
 
+// chaeck for open ports
+//sudo lsof -i -n -P | grep TCP
+
+
+
+//create virtual machine ( after installing node toolbox :https://docs.docker.com/toolbox/ )
+// sudo docker-machine create --driver virtualbox node-01
+//sudo docker-machine env node-02
+// ssh 
+//docker-machine ssh node-02
+
+// init swarm
+//sudo docker swarm init --advertise-addr 127.0.0.1
+// join
+//docker swarm join --token SWMTKN-1-20ado5bfq1yljux70kthh7mo2pqq0xjt9k3h1cmpf4kr1f83od-2tz9te0tbldbp68wpibt8ov1h 127.0.0.1:2377
+
+//acess machine
+//docker-machine ssh node-02
+cd
 // visualize in swarm
 docker service create \
   --name=viz \
