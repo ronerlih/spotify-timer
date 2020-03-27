@@ -1,15 +1,29 @@
 import React, { Component } from "react";
 import Timer from "../components/Timer";
 // import { Link } from "react-router-dom";
+import API from "../utils/API" 
 import { Col, Row, Container } from "../components/Grid";
 
 class Landing extends Component {
     state = {
         spotify: null,
-        src: "https://open.spotify.com/embed/playlist/37i9dQZF1DWWQRwui0ExPn"
+        src: "https://open.spotify.com/embed/playlist/37i9dQZF1DWWQRwui0ExPn",
+        oauth: null
     };
     spotifyRef =  React.createRef();
 
+    UNSAFE_componentWillMount(){
+        API.authSpotify()
+            .then(auth => {
+                console.log(auth);
+                // window.onSpotifyWebPlaybackSDKReady = () => {
+                //     // You can now initialize Spotify.Player and use the SDK
+                //     console.log('sdk ready');
+                    
+                //   };
+            })
+            .catch(e => console.log(e));
+    }
 
     handleInputChange = event => {
         const { name, value } = event.target;

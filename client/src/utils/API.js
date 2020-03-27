@@ -1,6 +1,12 @@
 import axios from "axios";
 
 export default {
+
+  // oAuth
+  authSpotify: function (){
+    return axios.get("/api/spotify/auth");
+  },
+
   // Gets all books
   getBooks: function () {
     return axios.get("/api/books");

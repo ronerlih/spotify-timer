@@ -4,7 +4,9 @@
   "private": true,
   "proxy": "http://localhost:3001/",
   "dependencies": {
+    "auth0-js": "^9.12.2",
     "axios": "^0.18.0",
+    "history": "^4.10.1",
     "moment": "^2.24.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
