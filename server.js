@@ -34,12 +34,12 @@ app.use(express.json());
 
 // Serve up static assets (usually on heroku)
 // if (process.env.NODE_ENV === "production") {
-  router.use(express.static(path.resolve(__dirname, 'client/build'), { maxAge: '30d' }));
+  router.use(express.static(path.resolve(__dirname, 'client/build'), { maxAge: '1d' }));
 // }
 
-// Add router (ssr and static)
+// use router middleware 
 app.use(router);
-// Add API and view routes
+// Add API and view routes ,ssr and static
 router.use(APIandAppRoutes);
 
 // error handling
