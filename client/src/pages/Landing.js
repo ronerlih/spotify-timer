@@ -13,16 +13,16 @@ class Landing extends Component {
     spotifyRef =  React.createRef();
 
     UNSAFE_componentWillMount(){
-        API.authSpotify()
-            .then(auth => {
-                console.log(auth);
-                // window.onSpotifyWebPlaybackSDKReady = () => {
-                //     // You can now initialize Spotify.Player and use the SDK
-                //     console.log('sdk ready');
+        // API.authSpotify()
+        //     .then(auth => {
+        //         console.log(auth);
+        //         // window.onSpotifyWebPlaybackSDKReady = () => {
+        //         //     // You can now initialize Spotify.Player and use the SDK
+        //         //     console.log('sdk ready');
                     
-                //   };
-            })
-            .catch(e => console.log(e));
+        //         //   };
+        //     })
+        //     .catch(e => console.log(e));
     }
 
     handleInputChange = event => {
@@ -55,6 +55,10 @@ class Landing extends Component {
                         style={{ padding: 0, backgroundColor: "black" }}
                     >
                         <div>
+                            {this.spotifyRef.current
+                            
+                            ? console.log(this.spotifyRef)
+                            : console.log("not")}
                             <iframe
                                 src={this.state.src}
                                 width="100%"
@@ -63,6 +67,7 @@ class Landing extends Component {
                                 allowtransparency="true"
                                 allow="encrypted-media"
                                 title="spotify-player"
+                                mozbrowser
                                 ref={this.spotifyRef}
                             ></iframe>
                         </div>
