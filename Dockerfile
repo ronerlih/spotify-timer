@@ -13,4 +13,4 @@ COPY . .
 # set command to expose env variable
 EXPOSE 3001
 
-CMD [ "npm", "start:prod" ]
+CMD [ "npm", "run", "start:prod"]

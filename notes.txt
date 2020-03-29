@@ -46,10 +46,11 @@ docker run -it -d -p 5000:8080 -v /var/run/docker.sock:/var/run/docker.sock dock
 
 
 //create virtual machine ( after installing node toolbox :https://docs.docker.com/toolbox/ )
-// sudo docker-machine create --driver virtualbox node-01
+// sudo docker-machine create --driver virtualbox [machine-name]
 //sudo docker-machine env node-02
 // ssh 
 //docker-machine ssh node-02
+
 
 // init swarm
 //sudo docker swarm init --advertise-addr 127.0.0.1
