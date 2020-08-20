@@ -33,7 +33,7 @@
     "@babel/register": "^7.7.7",
     "auth0-js": "^9.12.2",
     "axios": "^0.18.0",
-    "bcrypt": "^3.0.7",
+    "bcrypt": "^5.0.0",
     "btoa": "^1.2.1",
     "compression": "^1.7.4",
     "connect-redis": "^4.0.3",
